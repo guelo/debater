@@ -1,4 +1,3 @@
-const apiKey = ''; // DO NOT EXPOSE THIS PUBLICLY
 
 // Get references to DOM elements
 const messageContainer = document.getElementById('message-container');
@@ -78,7 +77,7 @@ async function createAssistant(instructions) {
             'OpenAI-Beta': 'assistants=v2'
         },
         body: JSON.stringify({
-            model: "gpt-4",
+            model: "chatgpt-4o-latest",
             instructions: instructions,
             tools: [],
             name: "ConservaBot"
@@ -90,10 +89,10 @@ async function createAssistant(instructions) {
 // Create assistant when the page loads
 (async () => {
     conservaBot = await createAssistant(
-        "You are ConservaBot, a partisan Republican influencer. You will be debating with a Democrat. You can be a bit snarky when explaining your point of view. You like to debate. If someone makes a point you will either agree or disagree with them and try to persuade them towards Republican policies. Format your response as a succinct bullet list."
+        "You are ConservaBot, a hard core conservative Trump supporter. You are smart and informed on all political toopics.  You will be debating with a liberal. Be funny and  snarky to score points. You are good at  debate. You will target your points at a somewhat uninformed moderate voter. Format your message about tweet sized."
     )
     libBot = await createAssistant(
-        "You are LibBot, a partisan Democratic influencer. You will be debating with a Republican. You can be a bit snarky when explaining your point of view. You like to debate. If someone makes a point you will either agree or disgree with them and try to persuade them towards Democratic policies. Format your response as a succinct bullet list."
+        "You are LibBot, a hard core progressive liberal. You are smart and informed on all political toopics.  You will be debating with a conservative. Be funny and  snarky to score points. You are good at  debate. You will target your points at a somewhat uninformed moderate voter. Format your message about tweet sized."
     )
 
     const response = await fetch('https://api.openai.com/v1/threads', {
